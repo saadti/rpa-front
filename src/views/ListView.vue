@@ -39,12 +39,8 @@ export default {
     methods: {
       async updateVisitants() {
         await this.axios.get(`${process.env.VUE_APP_URL_SERVER}/visitants`).then((response) => {
-          console.log(response)
           this.visitants = response.data
         })
-        if(this.visitants) {
-          console.log(this.visitants)
-        }
       },
       signupVisitants() {
           this.$router.push('/signup')

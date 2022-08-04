@@ -66,9 +66,16 @@ export default {
     backHome() {
       this.$router.push('/')
     },
-    onSubmit(event) {
+    async onSubmit(event) {
       event.preventDefault()
-      alert(JSON.stringify(this.form))
+      await this.axios.post(`${process.env.VUE_APP_URL_SERVER}/visitants`, this.visitant).then((response) => {
+        if (response.status === 201) {
+          this.$router.push('/')
+        }
+        else {
+          console.log(response)
+        }
+      })
     },
     onReset(event) {
       event.preventDefault()
